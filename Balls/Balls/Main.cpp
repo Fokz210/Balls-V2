@@ -3,20 +3,24 @@
 #endif // !_CRT_SECURE_NO_WARNINGS
 
 #ifndef DEBUG
-#define DEBUG
 #endif // DEBUG
 
 #include "h\TXLib.h"
 #include "Ball.h"
 #include "BallManager.h"
 #include "Scoreboard.h"
+#include "Globals.h"
+
+void MusicSwitch(const char * fileName, char button);
+void DebugSwitch(char button);
+void ShakeSwitch(char button);
 
 int main()
 {
+
 	txDisableAutoPause();
 	txCreateWindow(1366, 768);
 	txBegin();
-	
 
 	srand((unsigned int)time(0));
 	
@@ -25,9 +29,9 @@ int main()
 	HDC anim = txLoadImage("bin//animation.bmp");
 	HDC background = txLoadImage("bin//background.bmp");
 
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 100; i++)
 	{
-		Ball example(400, 40 - rand() % 30, { anim, {50, 50}, 14 });
+		Ball example(400, 10 + rand() % 10, { anim, {50, 50}, 14 });
 		balls.push_back(example);
 	}
 
@@ -37,7 +41,11 @@ int main()
 	txSelectFont("Calibri Light", 25);
 
 	while (!GetAsyncKeyState(VK_ESCAPE))
-	{
+	{	
+		MusicSwitch("bin//stars.wav", 'M');
+		DebugSwitch('D');
+		ShakeSwitch('S');
+
 		manager.Run();
 
 		scoreboard.refresh(manager.balls());
@@ -48,12 +56,7 @@ int main()
 
 		txRectangle(txGetExtentX() / 5, 0, txGetExtentX() / 5 + txGetExtentX() / 200, txGetExtentY());
 
-#ifdef DEBUG
-
-		if (txMouseButtons() != 0) _getch();
-
-#endif // DEBUG
-
+		if (txMouseButtons() != 0 && DEBUG_) _getch();
 
 		txSetFillColor(TX_WHITE);
 		txSleep(10);
@@ -62,7 +65,7 @@ int main()
 	}
 
 	txDeleteDC(background);
-
+	return EXIT_SUCCESS;
 }
 
 void Ball::Draw()
@@ -76,6 +79,8 @@ void Ball::Draw()
 	txSetFillColor(color_);
 
 	txCircle(pos_.x(), pos_.y(), radius_);
+
+	if (DEBUG_) vel_.Visualise(pos_.x(), pos_.y(), 0.005 * radius_, TX_BLUE, 2, "p");
 
 	if (anim_.anim) txTransparentBlt(txDC(), pos_.x() - radius_, pos_.y() - radius_, anim_.size.x, anim_.size.y, anim_.anim, anim_.size.x * (counter % anim_.framesCount), 0, TX_WHITE);
 } 
@@ -118,7 +123,9 @@ Ball::Ball() :
 	vel_(),
 	radius_(0),
 	color_(RGB(rand() % 255, rand() % 255, rand() % 255)),
-	score_(0)
+	score_(0),
+	org0({ 0, 0 }),
+	org1({ 0, 0 })
 {
 
 }
@@ -128,7 +135,9 @@ Ball::Ball(double maxVelocity, int radius) :
 	vel_(rand() % (int)(maxVelocity * 2) - maxVelocity, rand() % (int)(maxVelocity * 2) - maxVelocity),
 	radius_(radius),
 	color_(RGB(rand() % 255, rand() % 255, rand() % 255)),
-	score_(0)
+	score_(0),
+	org0({ 0, 0 }),
+	org1({ 0, 0 })
 {
 }
 
@@ -139,7 +148,9 @@ Ball::Ball(double maxVelocity, int radius, ANIMATION Anim) :
 	color_(RGB(rand() % 255, rand() % 255, rand() % 255)),
 	anim_(Anim),
 	globalCounter_(0),
-	score_(0)
+	score_(0),
+	org0({ 0, 0 }),
+	org1({ 0, 0 })
 {
 }
 
@@ -164,4 +175,78 @@ void Ball::VelRedefine()
 		wasPressed = true;
 		newVel.setVal(txMousePos());
 	}
+}
+
+void MusicSwitch(const char * fileName, char button)
+{
+	static bool buttonClick = false;
+	static bool music = false;
+
+	if (GetAsyncKeyState(button) && !music && !buttonClick)
+	{
+		buttonClick = true;
+		music = true;
+		txPlaySound(fileName, SND_LOOP);
+		printf("\a");
+	}
+	else if (GetAsyncKeyState(button) && music && !buttonClick)
+	{
+		buttonClick = true;
+		music = false;
+		txPlaySound(NULL);
+	}
+	else if (!GetAsyncKeyState(button))
+	{
+		buttonClick = false;
+	}
+}
+
+void DebugSwitch(char button)
+{
+	static bool buttonClick = false;
+
+	if (GetAsyncKeyState(button) && !DEBUG_ && !buttonClick)
+	{
+		buttonClick = true;
+		DEBUG_ = true;
+		printf("\a");
+	}
+	else if (GetAsyncKeyState(button) && DEBUG_ && !buttonClick)
+	{
+		buttonClick = true;
+		DEBUG_ = false;
+	}
+	else if (!GetAsyncKeyState(button))
+	{
+		buttonClick = false;
+	}
+}
+
+void ShakeSwitch(char button)
+{
+	static bool buttonClick = false;
+
+	if (GetAsyncKeyState(button) && !SHAKE && !buttonClick)
+	{
+		buttonClick = true;
+		SHAKE = true;
+		printf("\a");
+	}
+	else if (GetAsyncKeyState(button) && SHAKE && !buttonClick)
+	{
+		buttonClick = true;
+		SHAKE = false;
+	}
+	else if (!GetAsyncKeyState(button))
+	{
+		buttonClick = false;
+	}
+}
+
+POINT TxGetWindowOrg()
+{
+	RECT r = { 0, 0, 0, 0 };
+	GetWindowRect(txWindow(), &r);
+	POINT org = { r.left, r.top };
+	return org;
 }

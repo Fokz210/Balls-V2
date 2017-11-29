@@ -8,11 +8,18 @@ void Ball::Physics(RECT screen)
 {
 	prevPos_ = pos_;
 
-	//vel_ = vel_ + g * DT * 100;
+	org0 = org1; org1 = TxGetWindowOrg();
+	POINT d = { org1.x - org0.x, org1.y - org0.y };
+	
+	if (SHAKE)
+	{
+		pos_.x(pos_.x() - d.x);
+		pos_.y(pos_.y() - d.y);
+	}
+
+	vel_ = vel_ + MathVector(-d.x, -d.y);
 
 	pos_ = pos_ + vel_ * DT;
-	
-	//vel_ = vel_ * 0.99;
 
 	if (pos_.x() < screen.left + radius_)
 	{
@@ -77,6 +84,7 @@ void Ball::vel(MathVector vel)
 {
 	vel_ = vel;
 }
+
 
 
 

@@ -44,3 +44,5 @@ private:
 	DPOINT val;
 };
 
+double VectorsAngleCos(MathVector a, MathVector b);
+

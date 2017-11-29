@@ -84,7 +84,7 @@ const MathVector & operator + (const MathVector & v1)
 
 const MathVector operator - (const MathVector & v1)
 {
-	return MathVector(-v1.val);
+	return MathVector(-v1.val.x, -v1.val.y);
 }
 
 const MathVector operator + (const MathVector & left, const MathVector & right)
@@ -127,5 +127,11 @@ std::istream& operator >> (std::istream &s, MathVector &v)
 	std::cin >> v.val.y;
 	std::cout << std::endl;
 	return s;
+}
+
+double VectorsAngleCos(MathVector a, MathVector b)
+{
+	if (a.l() * b.l() != 0) return (a * b) / (a.l() * b.l());
+	else return 0;
 }
 

@@ -113,6 +113,7 @@
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="BallManager.cpp" />
+    <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MathVector.cpp" />
     <ClCompile Include="Scoreboard.cpp" />
@@ -120,6 +121,7 @@
   <ItemGroup>
     <ClInclude Include="Ball.h" />
     <ClInclude Include="BallManager.h" />
+    <ClInclude Include="Globals.h" />
     <ClInclude Include="h\TXLib.h" />
     <ClInclude Include="MathVector.h" />
     <ClInclude Include="Scoreboard.h" />

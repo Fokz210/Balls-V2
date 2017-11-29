@@ -1,15 +1,4 @@
-﻿  BallManager.cpp
-c:\users\chere\source\repos\balls\balls-v2\balls\balls\ballmanager.cpp(81): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\chere\source\repos\balls\balls-v2\balls\balls\ballmanager.cpp(83): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\chere\source\repos\balls\balls-v2\balls\balls\ballmanager.cpp(84): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\chere\source\repos\balls\balls-v2\balls\balls\ballmanager.cpp(86): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\chere\source\repos\balls\balls-v2\balls\balls\ballmanager.cpp(87): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\chere\source\repos\balls\balls-v2\balls\balls\ballmanager.cpp(88): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\chere\source\repos\balls\balls-v2\balls\balls\ballmanager.cpp(89): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\chere\source\repos\balls\balls-v2\balls\balls\ballmanager.cpp(92): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\chere\source\repos\balls\balls-v2\balls\balls\ballmanager.cpp(93): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\chere\source\repos\balls\balls-v2\balls\balls\ballmanager.cpp(96): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\chere\source\repos\balls\balls-v2\balls\balls\ballmanager.cpp(97): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+﻿  Scoreboard.cpp
 x:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xstring(2447): warning C4124: __fastcall with stack checking is inefficient
   x:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xstring(2433): note: while compiling class template member function 'std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>> &std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>>::assign(const _Elem *const ,const unsigned int)'
           with
@@ -22,5 +11,56 @@ x:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.1
               _Elem=char32_t
           ]
   x:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\string(666): note: see reference to class template instantiation 'std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>>' being compiled
+  Main.cpp
+c:\users\chere\source\repos\balls\balls-v2\balls\balls\main.cpp(83): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+x:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xstring(2447): warning C4124: __fastcall with stack checking is inefficient
+  x:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xstring(2433): note: while compiling class template member function 'std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>> &std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>>::assign(const _Elem *const ,const unsigned int)'
+          with
+          [
+              _Elem=char32_t
+          ]
+  x:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xstring(1964): note: see reference to function template instantiation 'std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>> &std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>>::assign(const _Elem *const ,const unsigned int)' being compiled
+          with
+          [
+              _Elem=char32_t
+          ]
+  x:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\string(666): note: see reference to class template instantiation 'std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>>' being compiled
+  Globals.cpp
+  BallManager.cpp
+c:\users\chere\source\repos\balls\balls-v2\balls\balls\ballmanager.cpp(78): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\chere\source\repos\balls\balls-v2\balls\balls\ballmanager.cpp(80): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\chere\source\repos\balls\balls-v2\balls\balls\ballmanager.cpp(81): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\chere\source\repos\balls\balls-v2\balls\balls\ballmanager.cpp(82): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\chere\source\repos\balls\balls-v2\balls\balls\ballmanager.cpp(83): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\chere\source\repos\balls\balls-v2\balls\balls\ballmanager.cpp(84): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\chere\source\repos\balls\balls-v2\balls\balls\ballmanager.cpp(85): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\chere\source\repos\balls\balls-v2\balls\balls\ballmanager.cpp(88): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\chere\source\repos\balls\balls-v2\balls\balls\ballmanager.cpp(89): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+x:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xstring(2447): warning C4124: __fastcall with stack checking is inefficient
+  x:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xstring(2433): note: while compiling class template member function 'std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>> &std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>>::assign(const _Elem *const ,const unsigned int)'
+          with
+          [
+              _Elem=char32_t
+          ]
+  x:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xstring(1964): note: see reference to function template instantiation 'std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>> &std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>>::assign(const _Elem *const ,const unsigned int)' being compiled
+          with
+          [
+              _Elem=char32_t
+          ]
+  x:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\string(666): note: see reference to class template instantiation 'std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>>' being compiled
+  Ball.cpp
+x:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xstring(2447): warning C4124: __fastcall with stack checking is inefficient
+  x:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xstring(2433): note: while compiling class template member function 'std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>> &std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>>::assign(const _Elem *const ,const unsigned int)'
+          with
+          [
+              _Elem=char32_t
+          ]
+  x:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xstring(1964): note: see reference to function template instantiation 'std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>> &std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>>::assign(const _Elem *const ,const unsigned int)' being compiled
+          with
+          [
+              _Elem=char32_t
+          ]
+  x:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\string(666): note: see reference to class template instantiation 'std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>>' being compiled
+  Generating Code...
   Balls.vcxproj -> C:\Users\chere\source\repos\Balls\Balls-V2\Balls\Debug\Balls.exe
   Balls.vcxproj -> C:\Users\chere\source\repos\Balls\Balls-V2\Balls\Debug\Balls.pdb (Partial PDB)

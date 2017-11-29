@@ -1,9 +1,12 @@
 #pragma once
 #include "h\TXLib.h"
 #include "MathVector.h"
+#include "Globals.h"
 
-const MathVector g (0, -9.815);
+const MathVector g (0, 9.815);
 const double     DT = 0.01;
+
+POINT TxGetWindowOrg();
 
 struct ANIMATION
 {
@@ -40,5 +43,7 @@ protected:
 	ANIMATION  anim_;
 	int        globalCounter_;
 	int        score_;
+	POINT      org0;
+	POINT      org1;
 };
 

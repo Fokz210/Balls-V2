@@ -1,6 +1,5 @@
 #include "BallManager.h"
-
-#define DEBUG
+#include "Globals.h"
 
 BallManager::BallManager()
 {
@@ -37,7 +36,8 @@ void BallManager::Collider()
 		{
 			if (i == j) continue;
 
-			if (sqrt((balls_[i].pos().x() - balls_[j].pos().x())*(balls_[i].pos().x() - balls_[j].pos().x()) + ((balls_[i].pos().y() - balls_[j].pos().y()) * (balls_[i].pos().y() - balls_[j].pos().y()))) < balls_[i].radius() + balls_[j].radius())
+			if (sqrt((balls_[i].pos().x() - balls_[j].pos().x())*(balls_[i].pos().x() - balls_[j].pos().x()) + ((balls_[i].pos().y() - balls_[j].pos().y()) * (balls_[i].pos().y() - balls_[j].pos().y()))) < balls_[i].radius() + balls_[j].radius() &&
+				VectorsAngleCos(balls_[i].vel() - balls_[j].vel(), balls_[i].pos() - balls_[j].pos()) <= 0)
 			{
 				collide(balls_[i], balls_[j]);
 			}
@@ -60,11 +60,11 @@ void BallManager::collide(Ball & a, Ball & b)
 {
 	MathVector p1 = a.vel() * a.radius(), p2 = b.vel() * b.radius();
 
-	/* 1)   */ MathVector n = MathVector(a.pos() - b.pos()).norm(); 
+	/* 1)   */ MathVector n = MathVector(a.pos() - b.pos()).norm();
 	/* 2)   */ MathVector t(-n.y(), n.x());
 	/* 3.1) */ double p1n = p1 * n, p2n = p2 * n;
 	/* 4.1) */ double buff = p1n;
-	/* 4.2) */ p1n = p2n; 
+	/* 4.2) */ p1n = p2n;
 	/* 4.3) */ p2n = buff;
 	/* 5)   */ MathVector p1ns = n * p1n, p2ns = n * p2n;
 	/* 6)   */ MathVector p1t = t * (p1 * t), p2t = t * (p2 * t);
@@ -73,34 +73,23 @@ void BallManager::collide(Ball & a, Ball & b)
 	a.vel(p1s / a.radius());
 	b.vel(p2s / b.radius());
 
-	//a.BackupPos();
-	//b.BackupPos();
-	
-#ifdef DEBUG
+	if (DEBUG_)
+	{
+			MathVector(a.pos() - b.pos()).Visualise(b.pos().x(), b.pos().y(), 1, TX_GRAY, 1, "O1O2");
 
-	MathVector(a.pos() - b.pos()).Visualise(b.pos().x(), b.pos().y(), 1, TX_GRAY, 1, "O1O2");
- 
-	p1.Visualise(a.pos().x(), a.pos().y(), 0.003, TX_BLUE, 2, "p1");
-	p2.Visualise(b.pos().x(), b.pos().y(), 0.003, TX_BLUE, 2, "p2");
-
-	MathVector(n * p2n).Visualise(a.pos().x(), a.pos().y(), 0.003, TX_RED, 2, "p1n");
-	MathVector(n * p1n).Visualise(b.pos().x(), b.pos().y(), 0.003, TX_RED, 2, "p2n");
-	p1t.Visualise(a.pos().x(), a.pos().y(), 0.003, TX_GREEN, 2, "p1t");
-	p2t.Visualise(b.pos().x(), b.pos().y(), 0.003, TX_GREEN, 2, "p2t");
-
-	
-	p1ns.Visualise(a.pos().x(), a.pos().y(), 0.003, TX_RED, 2, "p1n'");
-	p2ns.Visualise(b.pos().x(), b.pos().y(), 0.003, TX_RED, 2, "p2n'");
-
-	
-	p1s.Visualise(a.pos().x(), a.pos().y(), 0.003, TX_ORANGE, 2, "p1'");
-	p2s.Visualise(b.pos().x(), b.pos().y(), 0.003, TX_ORANGE, 2, "p2'");
+			MathVector(n * p2n).Visualise(a.pos().x(), a.pos().y(), 0.003, TX_RED, 2, "p1n");
+			MathVector(n * p1n).Visualise(b.pos().x(), b.pos().y(), 0.003, TX_RED, 2, "p2n");
+			p1t.Visualise(a.pos().x(), a.pos().y(), 0.003, TX_GREEN, 2, "p1t");
+			p2t.Visualise(b.pos().x(), b.pos().y(), 0.003, TX_GREEN, 2, "p2t");
+			p1ns.Visualise(a.pos().x(), a.pos().y(), 0.003, TX_RED, 2, "p1n'");
+			p2ns.Visualise(b.pos().x(), b.pos().y(), 0.003, TX_RED, 2, "p2n'");
 
 
-	n.Visualise(600, 100, 100, TX_RED, 2, "n");
-	t.Visualise(600, 100, 100, TX_GREEN, 2, "t");
+			p1s.Visualise(a.pos().x(), a.pos().y(), 0.003, TX_ORANGE, 2, "p1'");
+			p2s.Visualise(b.pos().x(), b.pos().y(), 0.003, TX_ORANGE, 2, "p2'");
 
-	//txSleep(2000);
 
-#endif // DEBUG
+			n.Visualise(600, 100, 100, TX_RED, 2, "n");
+			t.Visualise(600, 100, 100, TX_GREEN, 2, "t");
+		}
 }
