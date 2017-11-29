@@ -1,6 +1,6 @@
 #include "BallManager.h"
 
-//#define DEBUG
+#define DEBUG
 
 BallManager::BallManager()
 {
@@ -40,7 +40,6 @@ void BallManager::Collider()
 			if (sqrt((balls_[i].pos().x() - balls_[j].pos().x())*(balls_[i].pos().x() - balls_[j].pos().x()) + ((balls_[i].pos().y() - balls_[j].pos().y()) * (balls_[i].pos().y() - balls_[j].pos().y()))) < balls_[i].radius() + balls_[j].radius())
 			{
 				collide(balls_[i], balls_[j]);
-				
 			}
 		}
 }

@@ -3,7 +3,7 @@
 #endif // !_CRT_SECURE_NO_WARNINGS
 
 #ifndef DEBUG
-//#define DEBUG
+#define DEBUG
 #endif // DEBUG
 
 #include "h\TXLib.h"
@@ -25,9 +25,9 @@ int main()
 	HDC anim = txLoadImage("bin//animation.bmp");
 	HDC background = txLoadImage("bin//background.bmp");
 
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 20; i++)
 	{
-		Ball example(400, 70 - rand() % 30, { anim, {50, 50}, 14 });
+		Ball example(400, 40 - rand() % 30, { anim, {50, 50}, 14 });
 		balls.push_back(example);
 	}
 
@@ -43,8 +43,8 @@ int main()
 		scoreboard.refresh(manager.balls());
 		scoreboard.Run();
 
-		txSetColor(TX_ORANGE);
-		txSetFillColor(TX_ORANGE);
+		txSetColor(RGB(161, 2, 219));
+		txSetFillColor(RGB(161, 2, 219));
 
 		txRectangle(txGetExtentX() / 5, 0, txGetExtentX() / 5 + txGetExtentX() / 200, txGetExtentY());
 
