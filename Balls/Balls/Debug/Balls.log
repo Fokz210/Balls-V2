@@ -1,0 +1,15 @@
+﻿  BallManager.cpp
+x:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xstring(2447): warning C4124: __fastcall with stack checking is inefficient
+  x:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xstring(2433): note: while compiling class template member function 'std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>> &std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>>::assign(const _Elem *const ,const unsigned int)'
+          with
+          [
+              _Elem=char32_t
+          ]
+  x:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xstring(1964): note: see reference to function template instantiation 'std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>> &std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>>::assign(const _Elem *const ,const unsigned int)' being compiled
+          with
+          [
+              _Elem=char32_t
+          ]
+  x:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\string(666): note: see reference to class template instantiation 'std::basic_string<char32_t,std::char_traits<char32_t>,std::allocator<char32_t>>' being compiled
+  Balls.vcxproj -> C:\Users\chere\source\repos\Balls\Debug\Balls.exe
+  Balls.vcxproj -> C:\Users\chere\source\repos\Balls\Debug\Balls.pdb (Partial PDB)
